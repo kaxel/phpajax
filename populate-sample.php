@@ -14,8 +14,6 @@ if (mysqli_query($con,$sql)) {
 	foreach ($retailers as $value) {
 		
 		$sqlinsert = "insert into retailers (name) values ('$value')";
-	    
-		#echo $sqlinsert . "<br>";
 		mysqli_query($con,$sqlinsert);
 	}
   
@@ -34,9 +32,7 @@ if (mysqli_query($con,$sql)) {
 		$this_day = rand(1,30);
 		
 		$sqlinsert = "insert into june_sales (day_num, retailer_name, sale_amount) values ($this_day, '$this_retailer', $this_amount)";
-		
-	  #echo "$sqlinsert <br>";
-	  mysqli_query($con,$sqlinsert);
+	    mysqli_query($con,$sqlinsert);
 	  
 	}
 	echo "Finished. <br>";

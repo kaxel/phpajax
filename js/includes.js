@@ -1,6 +1,9 @@
 function runScript(str) {
+	
+  $('#resultMessage')[0].innerHTML='running...';
+	
   if (str=="0") {
-      document.getElementById("resultMessage").innerHTML="";
+      $('#resultMessage')[0].innerHTML="";
       return;
   } 
 	
@@ -12,7 +15,7 @@ function runScript(str) {
   }
   xmlhttp.onreadystatechange=function() {
     if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-      document.getElementById("resultMessage").innerHTML=xmlhttp.responseText;
+      $('#resultMessage')[0].innerHTML=xmlhttp.responseText;
     }
   }
   xmlhttp.open("GET",str,true);
@@ -20,8 +23,10 @@ function runScript(str) {
 }
 
 function loadData(str) {
+  $('#resultMessage')[0].innerHTML='running...';
+	
   if (str=="0") {
-      document.getElementById("resultMessage").innerHTML="";
+      $('#resultMessage')[0].innerHTML="";
       return;
   } 
 	
@@ -33,7 +38,8 @@ function loadData(str) {
   }
   xmlhttp.onreadystatechange=function() {
     if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-      document.getElementById("resultMessage").innerHTML=xmlhttp.responseText;
+		// this is where we bind the JSON to a jquery table
+      $('#resultMessage')[0].innerHTML=xmlhttp.responseText;
     }
   }
   xmlhttp.open("GET",str,true);
