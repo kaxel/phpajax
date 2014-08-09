@@ -12,23 +12,20 @@ $query = "select name, IF(sum(js.sale_amount) IS NULL, 0, sum(js.sale_amount)) a
 
 if ($result = mysqli_query($link, $query)) {
 	
-	$response=array();
 	$info=array();
 
     /* fetch associative array */
     while ($row = mysqli_fetch_assoc($result)) {
-        printf ("%s (%s)<br>", $row["name"], $row["amt"]);
 		
         $lineInfo = array();
         $lineInfo["name"] = $row["name"];
-        $lineInfo["amt"] = $row["amt"];
+		
+		$formatted_number = number_format($row["amt"], 2);
+        $lineInfo["amt"] = $formatted_number;
         array_push($info, $lineInfo);    
     }
-	
-	echo "<br>";
-	
-    $response['info']=$info;
-    echo json_encode($response);
+		
+    echo json_encode($info);
 
     /* free result set */
     mysqli_free_result($result);

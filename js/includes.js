@@ -39,7 +39,15 @@ function loadData(str) {
   xmlhttp.onreadystatechange=function() {
     if (xmlhttp.readyState==4 && xmlhttp.status==200) {
 		// this is where we bind the JSON to a jquery table
-      $('#resultMessage')[0].innerHTML=xmlhttp.responseText;
+	    var json = xmlhttp.responseText;
+		obj = $.parseJSON(json);
+	    $('#columns').columns({
+			data:obj,
+			sortableFields: ['name','amt'],
+			sortBy: 'name'
+		});
+	  
+	    $('#resultMessage')[0].innerHTML="Done.";
     }
   }
   xmlhttp.open("GET",str,true);
