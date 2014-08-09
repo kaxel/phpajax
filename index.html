@@ -1,0 +1,55 @@
+<html>
+<head>
+  <link href="css/footable.core.css" rel="stylesheet" type="text/css" />
+  <link href="css/footable.metro.css" rel="stylesheet" type="text/css" />
+  <script src="js/jquery-1.11.1.js" type="text/javascript"></script>
+  <script src="js/footable.js" type="text/javascript"></script>
+  <script src="js/includes.js" type="text/javascript"></script>
+  
+</head>
+<body>
+
+<script type="text/javascript">
+	$(function () {
+		$('.footable').footable();
+	});
+</script>
+
+
+
+<table class="footable table">
+	<thead>
+		<tr>
+			<th>script name</th>
+			<th>description</th>
+		</tr>
+	</thead>
+	<tr>
+		<td><br/>
+			<form>
+				<select name="scripts" onchange="runScript(this.value); document.getElementById('resultMessage').innerHTML='running...'">
+				    <option value="0">Select a script:</option>
+			        <option value="create-sample.php">create sample db.</option>
+			        <option value="populate-sample.php">populate sample db.</option>
+			        <option value="delete-sample.php">delete sample db.</option>
+			    </select>
+			</form>
+		</td>
+	    <td>populate, create or drop database.</td>
+	</tr>
+	<tr>
+		<td><br/>
+			<form>
+				<select name="load_data" onchange="loadData(this.value);">
+			        <option value="0">load data:</option>
+		            <option value="left-join-sample.php">load left join.</option>
+				</select>
+			</form>
+		</td>
+		<td>request data from database using left outer join.</td>
+	</tr>
+</table>
+<br>
+<div id="resultMessage"></div>
+</body>
+</html>
