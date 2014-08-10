@@ -1,0 +1,54 @@
+body {
+	margin: auto; /* center in viewport */
+	width: 960px;
+}
+		
+.example .box-row li{
+	display: inline-block;
+	zoom: 1; *display: inline; /* IE < 8: fake inline-block */
+	line-height: 3em;
+	text-align: center;
+	margin: 0.5em 1em 0.5em 0;
+	border: solid 1px #ccc;
+	background-color: #F4E6B8;
+	cursor: pointer;
+}
+	#infoblock {width: 400px;}
+	#dbblock {width: 215px;}
+	#graphblock {width: 215px;}
+	#infoblock-message, #dbblock-message, #graphblock-message {
+		display: none;
+}
+	.innertext {
+		margin: 1em;
+		line-height: 1.5;
+}
+		
+#hd header {
+	margin: 1em 0 0.5em 0;
+    color: #343434;
+    font-weight: normal;
+    font-family: 'Ultra', sans-serif;  
+    font-size: 36px;
+    line-height: 42px;
+    text-transform: uppercase;
+    text-shadow: 0 2px white, 0 3px #777;
+}
+#byline {float: right;}
+.footer {
+	text-align: center;
+}
+#resultMessage {
+	text-align: center;
+	margin-bottom: 1em;
+}
+.firstcol {
+	width: 40%;
+	text-align: right !important;
+}
+.myselect {
+	width:200px;
+}
+#mo-image {
+	color: #696969;
+}
