@@ -24,9 +24,9 @@ function runScript(str) {
 }
 
 function loadData(str) {
-	$('#resultMessage')[0].innerHTML='running...';
 	
 	var resultmessage = "running...";
+	$('#resultMessage')[0].innerHTML=resultmessage;
 	
 	if (str=="0") {
 		$('#resultMessage')[0].innerHTML="";

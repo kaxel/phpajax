@@ -1,62 +1,219 @@
 <html>
 <head>
-  <link href="css/footable.core.css" rel="stylesheet" type="text/css" />
-  <link href="css/footable.metro.css" rel="stylesheet" type="text/css" />
-  <script src="js/jquery-1.11.1.js" type="text/javascript"></script>
-  <script src="js/footable.js" type="text/javascript"></script>
-  <script src="js/includes.js" type="text/javascript"></script>
-  <script src="js/jquery.columns.min.js"></script>
-  <link rel="stylesheet" href="css/classic.css">
-  
+	<script src="http://yui.yahooapis.com/3.17.2/build/yui/yui-min.js"></script>
+	<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.17.2/build/cssgrids/cssgrids-min.css">
+	<link href="css/footable.core.css" rel="stylesheet" type="text/css" />
+	<link href="css/footable.metro.css" rel="stylesheet" type="text/css" />
+	<script src="js/footable.js" type="text/javascript"></script>
+	<script src="js/jquery-1.11.1.js" type="text/javascript"></script>
+	<script src="js/includes.js" type="text/javascript"></script>
+	<script src="js/jquery.columns.min.js"></script>
+	<link rel="stylesheet" href="css/classic.css">
+	
+	<style>
+	    body {
+	        margin: auto; /* center in viewport */
+	        width: 960px;
+	    }
+		
+		.example .box-row li{
+		    display: inline-block;
+		    zoom: 1; *display: inline; /* IE < 8: fake inline-block */
+		    line-height: 3em;
+		    text-align: center;
+		    margin: 0.5em 1em 0.5em 0;
+		    border: solid 1px #ccc;
+		    background-color: #F4E6B8;
+		    cursor: pointer;
+		}
+		#infoblock {width: 400px;}
+		#dbblock {width: 215px;}
+		#graphblock {width: 215px;}
+		#infoblock-message, #dbblock-message, #graphblock-message {
+			display: none;
+		}
+		.innertext {
+			margin: 1em;
+			line-height: 1.5;
+		}
+		
+		#hd header {
+    margin: 1em 0 0.5em 0;
+    color: #343434;
+    font-weight: normal;
+    font-family: 'Ultra', sans-serif;  
+    font-size: 36px;
+    line-height: 42px;
+    text-transform: uppercase;
+    text-shadow: 0 2px white, 0 3px #777;
+}
+#byline {float: right;}
+.footer {
+	text-align: center;
+}
+#resultMessage {
+	text-align: center;
+	margin-bottom: 1em;
+}
+.firstcol {
+	width: 40%;
+	text-align: right !important;
+}
+.myselect {
+	width:200px;
+}
+#mo-image {
+	color: #696969;
+}
+		</style>
+		
+		
 </head>
-<body>
 
-<script type="text/javascript">
-	$(function () {
-		$('.footable').footable();
-	});
-</script>
+	<body class="yui3-skin-sam">
+		<div class="yui3-g">
+			
+	    	<div class="yui3-u-1">
+				<div id="hd">
+					<span id="byline">by Krister Axel</span>
+					<header>PHP-Ajax sample code</header>
+				</div>
+				
+				
+				<div class="example">
+					Click for more info.
+					<ul class="box-row">
+			    	<li id="infoblock">...</li>
+			    	<li id="dbblock">...</li>
+			    	<li id="graphblock">...</li>
+					</ul>
+				</div>
+			
+				<div id="resultMessage">
+				</div>
+			
+				<div id="infoblock-message">
+					<div class="innertext">
+				...with PHP, JavaScript, and MySQL.<br/>I was given a <span id="mo-image">checklist of tasks</span>
+						<span class="mo-view">
+							<span><img src="images/search.png" style="max-width: 128px" data-large-uri="images/mytasks.png"></span>
+						</span>
+				
+				 that included looping over an array, inserting 100,000 rows into a database, using AJAX to run a MySQL query asynchronously and using that to build a table with JSON.
+					</div>
+				</div>
+			
+				<div id="dbblock-message">
+				<table class="footable table">
+					<tr>
+						<td class="firstcol"><br/>
+							<form>
+								<select class="myselect" name="scripts" onchange="runScript(this.value);">
+								    <option value="0">Select a script:</option>
+							        <option value="create-sample.php">create sample db.</option>
+							        <option value="populate-sample.php">populate sample db.</option>
+							        <option value="delete-sample.php">delete sample db.</option>
+							    </select>
+							</form>
+						</td>
+					    <td>populate, create or drop database.</td>
+					</tr>
+				</table>
+			</div>
+			
+				<div id="graphblock-message">
+					<table class="footable table">
+						<tr>
+							<td class="firstcol"><br/>
+							<form>
+								<select name="load_data" class="myselect" onchange="loadData(this.value);">
+							        <option value="0">load data:</option>
+						            <option value="left-join-sample.php">load left join.</option>
+								</select>
+							</form>
+							</td>
+							<td>request data from database using left outer join.</td>
+						</tr>
+					</table>
+				</div>
+			
+				<hr>
+				<div id="columns"></div>
+				<div class="footer">
+					<h5>
+						view the code <a href="https://github.com/kaxel/phpajax" target="_blank">here</a>.
+					</h5>
+				</div>
+			
+			</div>
+	        
+	    </div>
+					
+	
+		<script type="text/javascript">
+		$(function () {
+		    $('.footable').footable();
+		});
 
+		YUI().use('panel', 'node', 'event-delegate', function(Y) {
+			var panel = new Y.Panel({
+	          render   : true,
+	          visible  : false,
+	          modal    : true,
+	          centered : true,
+	          bodyContent : '<img src="">'
+	        });
+      
+			Y.one('.mo-view').delegate('click', function(e) {
+				Y.log('Click: ' + e.target.getData('large-uri'));
+				panel.get('contentBox').one('img').set('src', e.target.getData('large-uri'));
+				panel.show();
+				panel.align();
+			}, 'img');
+		});
+		YUI().use('node', function(Y){
+		    var boxes = Y.all('.box-row li');
+			
+			var lblStr = "";
+
+		    var handleBoxClick = function(e) {
+		        // boxes is a NodeList
+		        boxes.setHTML('...');
+		        boxes.setStyle('backgroundColor', '#F4E6B8');
+				
+				$('#infoblock-message').hide();
+				$('#dbblock-message').hide();
+				$('#graphblock-message').hide();
+		        
+				if (e.currentTarget.generateID()=="infoblock") {
+					lblStr = "Zach from Admixt wants to see what I can do...";
+					$('#infoblock-message').show();
+				};
+				
+				if (e.currentTarget.generateID()=="dbblock") {
+					lblStr = "Build the database.";
+					$('#dbblock-message').show();
+				};
+				
+				if (e.currentTarget.generateID()=="graphblock") {
+					lblStr = 'Load the graph.';
+					$('#graphblock-message').show();
+				};
+				
+				e.currentTarget.setHTML(lblStr);
+		        e.currentTarget.setStyle('backgroundColor', '#C4DAED');
+		    };    
+		    Y.one('.box-row').delegate('click', handleBoxClick, 'li');
+		});
+	    </script>
+		
+	</body>
+	
 <!-- 
-many thanks to: http://fooplugins.com/plugins/footable-jquery/
-and http://eisenbraun.github.io/columns/
+many thanks to:
+http://eisenbraun.github.io/columns/
+http://fooplugins.com/plugins/footable-jquery/
+https://yuilibrary.com/yui/docs/node/
 -->
 
-<table class="footable table">
-	<thead>
-		<tr>
-			<th>script name</th>
-			<th>description</th>
-		</tr>
-	</thead>
-	<tr>
-		<td><br/>
-			<form>
-				<select name="scripts" onchange="runScript(this.value);">
-				    <option value="0">Select a script:</option>
-			        <option value="create-sample.php">create sample db.</option>
-			        <option value="populate-sample.php">populate sample db.</option>
-			        <option value="delete-sample.php">delete sample db.</option>
-			    </select>
-			</form>
-		</td>
-	    <td>populate, create or drop database.</td>
-	</tr>
-	<tr>
-		<td><br/>
-			<form>
-				<select name="load_data" onchange="loadData(this.value);">
-			        <option value="0">load data:</option>
-		            <option value="left-join-sample.php">load left join.</option>
-				</select>
-			</form>
-		</td>
-		<td>request data from database using left outer join.</td>
-	</tr>
-</table>
-<br>
-<div id="resultMessage"></div>
-<hr>
-<div id="columns"></div>
-</body>
 </html>
