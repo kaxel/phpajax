@@ -24,7 +24,6 @@
 					<header>PHP-Ajax sample code</header>
 				</div>
 				
-				
 				<div class="example">
 					Click for more info.
 					<ul class="box-row">
@@ -49,22 +48,22 @@
 				</div>
 			
 				<div id="dbblock-message">
-				<table class="footable table">
-					<tr>
-						<td class="firstcol"><br/>
-							<form>
+					<table class="footable table">
+						<tr>
+							<td class="firstcol"><br/>
+								<form>
 								<select class="myselect" name="scripts" onchange="runScript(this.value);">
 								    <option value="0">Select a script:</option>
 							        <option value="create-sample.php">create sample db.</option>
 							        <option value="populate-sample.php">populate sample db.</option>
 							        <option value="delete-sample.php">delete sample db.</option>
 							    </select>
-							</form>
-						</td>
-					    <td>populate, create or drop database.</td>
-					</tr>
-				</table>
-			</div>
+								</form>
+							</td>
+					    	<td>populate, create or drop database.</td>
+						</tr>
+					</table>
+				</div>
 			
 				<div id="graphblock-message">
 					<table class="footable table">
@@ -81,7 +80,6 @@
 						</tr>
 					</table>
 				</div>
-			
 				<hr>
 				<div id="columns"></div>
 				<div class="footer">
@@ -89,12 +87,9 @@
 						view the code <a href="https://github.com/kaxel/phpajax" target="_blank">here</a>.
 					</h5>
 				</div>
-			
 			</div>
-	        
 	    </div>
-					
-	
+
 		<script type="text/javascript">
 		$(function () {
 		    $('.footable').footable();
@@ -118,14 +113,13 @@
 		});
 		YUI().use('node', function(Y){
 		    var boxes = Y.all('.box-row li');
-			
 			var lblStr = "";
-
 		    var handleBoxClick = function(e) {
 		        // boxes is a NodeList
 		        boxes.setHTML('...');
 		        boxes.setStyle('backgroundColor', '#F4E6B8');
 				
+				//hide all at first
 				$('#infoblock-message').hide();
 				$('#dbblock-message').hide();
 				$('#graphblock-message').hide();
@@ -151,14 +145,11 @@
 		    Y.one('.box-row').delegate('click', handleBoxClick, 'li');
 		});
 	    </script>
-		
 	</body>
-	
 <!-- 
 many thanks to:
 http://eisenbraun.github.io/columns/
 http://fooplugins.com/plugins/footable-jquery/
 https://yuilibrary.com/yui/docs/node/
 -->
-
 </html>
