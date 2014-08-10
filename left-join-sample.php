@@ -16,19 +16,21 @@ if ($result = mysqli_query($link, $query)) {
 
     /* fetch associative array */
     while ($row = mysqli_fetch_assoc($result)) {
-		
+	
         $lineInfo = array();
         $lineInfo["name"] = $row["name"];
-		
+	
 		$formatted_number = number_format($row["amt"], 2);
         $lineInfo["amt"] = $formatted_number;
         array_push($info, $lineInfo);    
     }
-		
+	
     echo json_encode($info);
 
     /* free result set */
     mysqli_free_result($result);
+} else {
+	echo "no result";
 }
 
 /* close connection */
