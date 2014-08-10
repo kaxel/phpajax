@@ -108,9 +108,11 @@
 				Y.log('Click: ' + e.target.getData('large-uri'));
 				panel.get('contentBox').one('img').set('src', e.target.getData('large-uri'));
 				panel.show();
-				panel.align();
 			}, 'img');
+			sleep(10);
+			panel.align();
 		});
+		
 		YUI().use('node', function(Y){
 		    var boxes = Y.all('.box-row li');
 			var lblStr = "";
