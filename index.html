@@ -40,7 +40,7 @@
 					<div class="innertext">
 				...with PHP, JavaScript, and MySQL.<br/>I was given a <span id="mo-image">checklist of tasks</span>
 						<span class="mo-view">
-							<span><img src="images/search.png" style="max-width: 128px" data-large-uri="images/mytasks.png"></span>
+							<span><img src="images/search.png"></span>
 						</span>
 				
 				 that included looping over an array, inserting 100,000 rows into a database, using AJAX to run a MySQL query asynchronously and using that to build a table with JSON.
@@ -89,7 +89,7 @@
 				</div>
 			</div>
 	    </div>
-
+		
 		<script type="text/javascript">
 		$(function () {
 		    $('.footable').footable();
@@ -101,16 +101,13 @@
 	          visible  : false,
 	          modal    : true,
 	          centered : true,
-	          bodyContent : '<img src="">'
+	          bodyContent : '<img src="images/mytasks.png">'
 	        });
       
 			Y.one('.mo-view').delegate('click', function(e) {
-				Y.log('Click: ' + e.target.getData('large-uri'));
-				panel.get('contentBox').one('img').set('src', e.target.getData('large-uri'));
+				panel.align();
 				panel.show();
 			}, 'img');
-			sleep(10);
-			panel.align();
 		});
 		
 		YUI().use('node', function(Y){
