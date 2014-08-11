@@ -1,6 +1,6 @@
 ##PHP AJAX MYSQL JAVASCRIPT CSS
 
-I wrote up these code samples as part job interview, and part portfolio. Plus it was fun to play with YUI 3, and Jquery.
+I wrote up these code samples as part job interview, and part portfolio. Plus it was fun to play with YUI 3, and JQuery.
 
 Here is the original assignment:
 
