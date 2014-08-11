@@ -25,7 +25,7 @@ I set up the array of retailers in PHP, and I loop through 100,000 times, with a
 Finally, as per the assignment, I am using JSON to push the data from PHP to the Javascript front-end.
 
 credits:
-Custom CSS, PHP, SQL and JavaScript code by Krister Axel.
+custom CSS, PHP, SQL and JavaScript code by Krister Axel.
 
 CSS and JavaScript modules by:
 [Jquery Columns](http://eisenbraun.github.io/columns/)
