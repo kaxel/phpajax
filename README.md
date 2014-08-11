@@ -18,12 +18,11 @@ Here is the original assignment:
 >6. and returns JSON to the jQuery front-end
 >7. that loads the data into an html table
 
-and that was it. I am using nodes with YUI3 for some flair, JQuery for the selects and module support (footable and columns), and mysql on the back end. I had to set up Apache and httpd to serve the files and to support simple auth via .htaccess.
+and that was it. I am using nodes with YUI3 for some flair, JQuery for the selects and module support (footable and columns), and mysql on the back end. I had to set up Apache and httpd to serve the files and to support simple auth via .htaccess, and I set up MySQL on the CentOS slice that I am using with a database called 'sample'. The application does the rest, in terms of setting up the two tables that are used in the join and populating the database with the small number of retailers, as well as the 100,000 sales records that go into the 'june_sales' table.
 
-I set up an array of retailers, and I loop through 100,000 times, with a random day in June (1-30) along with a random amount from $1.00 - $99.99 attributed to a random retailer (excepting Sears, the last one, so that the LEFT JOIN is actually meaningful).
+I set up the array of retailers in PHP, and I loop through 100,000 times, with a random day in June (1-30) along with a random amount from $1.00 - $99.99 attributed to a random retailer (excepting Sears, the last one, so that the LEFT JOIN is actually meaningful).
 
 Finally, as per the assignment, I am using JSON to push the data from PHP to the Javascript front-end.
-
 
 credits:
 Custom CSS, PHP, SQL and JavaScript code by Krister Axel.

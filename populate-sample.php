@@ -6,7 +6,7 @@ if (mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 
-$retailers = array("Target", "Gamestop", "Walmart", "CVS", "Whole Foods", "BiRite", "Sears");
+$retailers = array("Target", "Gamestop", "Walmart", "CVS", "Whole Foods", "BiRite", "Best Buy", "Carrefour", "Couche Tard", "Dreamland", "Kmart", "Kroger", "Kruidvat", "MediaMarkt", "FNAC", "Saturn", "Staples", "Tesco", "Supervalu", "Sears");
 
 $sql="CREATE TABLE retailers (id int(6) NOT NULL auto_increment,name varchar(15) NOT NULL, PRIMARY KEY (id))";
 
@@ -25,7 +25,7 @@ if (mysqli_query($con,$sql)) {
 		
 	for ($x=1; $x<=100000; $x++) {
 		#get random retailer (no Sears allowed)
-		$this_retailer = $retailers[rand(0, 5)];
+		$this_retailer = $retailers[rand(0, 18)];
 		#get random dollar amount
 		$this_amount = rand(100,9999)/100;
 		#get random day number (30 days in June)
